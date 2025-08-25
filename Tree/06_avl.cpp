@@ -1,5 +1,6 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include <iostream>
+
+using namespace std;
 
 struct AVLNode {
     int key;
@@ -34,8 +35,8 @@ AVLNode *rightRotate(AVLNode *y) {
     x->right = y;
     y->left = T2;
 
-    y->height = max(height(y->left), height(y->right)) + 1;
     x->height = max(height(x->left), height(x->right)) + 1;
+    y->height = max(height(y->left), height(y->right)) + 1;
 
     return x;
 }
@@ -47,8 +48,8 @@ AVLNode *leftRotate(AVLNode *x) {
     y->left = x;
     x->right = T2;
 
-    x->height = max(height(x->left), height(x->right)) + 1;
     y->height = max(height(y->left), height(y->right)) + 1;
+    x->height = max(height(x->left), height(x->right)) + 1;
 
     return y;
 }
@@ -95,7 +96,7 @@ AVLNode* insert(AVLNode* node, int key) {
 
 void preOrder(AVLNode *root) {
     if (root != NULL) {
-        printf("%d ", root->key);
+        cout << root->key << " ";
         preOrder(root->left);
         preOrder(root->right);
     }
